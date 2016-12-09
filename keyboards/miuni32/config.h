@@ -159,9 +159,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
 
-#define RGBLIGHT_TIMER 
-#define RGB_DI_PIN D1     // The pin your RGB strip is wired to
-#define RGBLIGHT_TIMER    // Require for fancier stuff (not compatible with audio)
+#define RGB_DI_PIN B5     // The pin your RGB strip is wired to
+#define RGB_DI_PIN_1 D0     // The pin your RGB strip is wired to
+#define RGB_DI_PIN_2 D2     // The pin your RGB strip is wired to
+#define RGB_DI_PIN_3 B4     // The pin your RGB strip is wired to
+#define RGB_DI_PIN_4 F5     // The pin your RGB strip is wired to
+#define RGB_DI_PIN_5 D1     // The pin your RGB strip is wired to
+//#define RGBLIGHT_TIMER    // Require for fancier stuff (not compatible with audio)
 #define RGBLED_NUM 1     // Number of LEDs
 #define RGBLIGHT_HUE_STEP 10
 #define RGBLIGHT_SAT_STEP 17

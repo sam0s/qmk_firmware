@@ -44,6 +44,11 @@ struct cRGBW { uint8_t g; uint8_t r; uint8_t b; uint8_t w;};
 
 void ws2812_setleds     (struct cRGB  *ledarray, uint16_t number_of_leds);
 void ws2812_setleds_pin (struct cRGB  *ledarray, uint16_t number_of_leds,uint8_t pinmask);
+void ws2812_setleds_pin_1 (struct cRGB  *ledarray, uint16_t number_of_leds,uint8_t pinmask);
+void ws2812_setleds_pin_2 (struct cRGB  *ledarray, uint16_t number_of_leds,uint8_t pinmask);
+void ws2812_setleds_pin_3 (struct cRGB  *ledarray, uint16_t number_of_leds,uint8_t pinmask);
+void ws2812_setleds_pin_4 (struct cRGB  *ledarray, uint16_t number_of_leds,uint8_t pinmask);
+void ws2812_setleds_pin_5 (struct cRGB  *ledarray, uint16_t number_of_leds,uint8_t pinmask);
 void ws2812_setleds_rgbw(struct cRGBW *ledarray, uint16_t number_of_leds);
 
 /*
@@ -54,7 +59,17 @@ void ws2812_setleds_rgbw(struct cRGBW *ledarray, uint16_t number_of_leds);
  */
 
 void ws2812_sendarray     (uint8_t *array,uint16_t length);
+void ws2812_sendarray_1     (uint8_t *array,uint16_t length);
+void ws2812_sendarray_2     (uint8_t *array,uint16_t length);
+void ws2812_sendarray_3     (uint8_t *array,uint16_t length);
+void ws2812_sendarray_4     (uint8_t *array,uint16_t length);
+void ws2812_sendarray_5     (uint8_t *array,uint16_t length);
 void ws2812_sendarray_mask(uint8_t *array,uint16_t length, uint8_t pinmask);
+void ws2812_sendarray_mask_1(uint8_t *array,uint16_t length, uint8_t pinmask);
+void ws2812_sendarray_mask_2(uint8_t *array,uint16_t length, uint8_t pinmask);
+void ws2812_sendarray_mask_3(uint8_t *array,uint16_t length, uint8_t pinmask);
+void ws2812_sendarray_mask_4(uint8_t *array,uint16_t length, uint8_t pinmask);
+void ws2812_sendarray_mask_5(uint8_t *array,uint16_t length, uint8_t pinmask);
 
 
 /*

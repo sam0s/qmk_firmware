@@ -19,34 +19,156 @@
 // Setleds for standard RGB
 void inline ws2812_setleds(struct cRGB *ledarray, uint16_t leds)
 {
-   // ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+   //ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
    ws2812_setleds_pin(ledarray,leds, _BV(RGB_DI_PIN & 0xF));
+   // ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+   ws2812_setleds_pin_1(ledarray,leds, _BV(RGB_DI_PIN_1 & 0xF));
+
+   // ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+   ws2812_setleds_pin_2(ledarray,leds, _BV(RGB_DI_PIN_2 & 0xF));
+
+   // ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+   ws2812_setleds_pin_3(ledarray,leds, _BV(RGB_DI_PIN_3 & 0xF));
+
+   // ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+   ws2812_setleds_pin_4(ledarray,leds, _BV(RGB_DI_PIN_4 & 0xF));
+
+   // ws2812_setleds_pin(ledarray,leds, _BV(ws2812_pin));
+   ws2812_setleds_pin_5(ledarray,leds, _BV(RGB_DI_PIN_5 & 0xF));
 }
 
 void inline ws2812_setleds_pin(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
 {
   // ws2812_DDRREG |= pinmask; // Enable DDR
   // new universal format (DDR)
-  _SFR_IO8((RGB_DI_PIN >> 4) + 1) |= pinmask;
 
+  _SFR_IO8((RGB_DI_PIN >> 4) + 1) |= pinmask;
   ws2812_sendarray_mask((uint8_t*)ledarray,leds+leds+leds,pinmask);
+  _delay_us(50);
+
+}
+
+void inline ws2812_setleds_pin_1(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
+{
+  // ws2812_DDRREG |= pinmask; // Enable DDR
+  // new universal format (DDR)
+
+  _SFR_IO8((RGB_DI_PIN_1 >> 4) + 1) |= pinmask;
+  ws2812_sendarray_mask_1((uint8_t*)ledarray,leds+leds+leds,pinmask);
+  _delay_us(50);
+
+}
+
+void inline ws2812_setleds_pin_2(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
+{
+  // ws2812_DDRREG |= pinmask; // Enable DDR
+  // new universal format (DDR)
+
+  _SFR_IO8((RGB_DI_PIN_2 >> 4) + 1) |= pinmask;
+  ws2812_sendarray_mask_2((uint8_t*)ledarray,leds+leds+leds,pinmask);
+  _delay_us(50);
+
+}
+
+void inline ws2812_setleds_pin_3(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
+{
+  // ws2812_DDRREG |= pinmask; // Enable DDR
+  // new universal format (DDR)
+
+  _SFR_IO8((RGB_DI_PIN_3 >> 4) + 1) |= pinmask;
+  ws2812_sendarray_mask_3((uint8_t*)ledarray,leds+leds+leds,pinmask);
+  _delay_us(50);
+
+}
+
+void inline ws2812_setleds_pin_4(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
+{
+  // ws2812_DDRREG |= pinmask; // Enable DDR
+  // new universal format (DDR)
+
+  _SFR_IO8((RGB_DI_PIN_4 >> 4) + 1) |= pinmask;
+  ws2812_sendarray_mask_4((uint8_t*)ledarray,leds+leds+leds,pinmask);
+  _delay_us(50);
+
+}
+
+void inline ws2812_setleds_pin_5(struct cRGB *ledarray, uint16_t leds, uint8_t pinmask)
+{
+  // ws2812_DDRREG |= pinmask; // Enable DDR
+  // new universal format (DDR)
+
+  _SFR_IO8((RGB_DI_PIN_5 >> 4) + 1) |= pinmask;
+  ws2812_sendarray_mask_5((uint8_t*)ledarray,leds+leds+leds,pinmask);
   _delay_us(50);
 }
 
 // Setleds for SK6812RGBW
 void inline ws2812_setleds_rgbw(struct cRGBW *ledarray, uint16_t leds)
 {
+/*
   // ws2812_DDRREG |= _BV(ws2812_pin); // Enable DDR
   // new universal format (DDR)
   _SFR_IO8((RGB_DI_PIN >> 4) + 1) |= _BV(RGB_DI_PIN & 0xF);
-
   ws2812_sendarray_mask((uint8_t*)ledarray,leds<<2,_BV(RGB_DI_PIN & 0xF));
   _delay_us(80);
+  // ws2812_DDRREG |= _BV(ws2812_pin); // Enable DDR
+  // new universal format (DDR)
+  _SFR_IO8((RGB_DI_PIN_1 >> 4) + 1) |= _BV(RGB_DI_PIN_1 & 0xF);
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds<<2,_BV(RGB_DI_PIN_1 & 0xF));
+  _delay_us(80);
+
+ // ws2812_DDRREG |= _BV(ws2812_pin); // Enable DDR
+  // new universal format (DDR)
+  _SFR_IO8((RGB_DI_PIN_2 >> 4) + 1) |= _BV(RGB_DI_PIN_2 & 0xF);
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds<<2,_BV(RGB_DI_PIN_2 & 0xF));
+  _delay_us(80);
+
+// ws2812_DDRREG |= _BV(ws2812_pin); // Enable DDR
+  // new universal format (DDR)
+  _SFR_IO8((RGB_DI_PIN_3 >> 4) + 1) |= _BV(RGB_DI_PIN_3 & 0xF);
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds<<2,_BV(RGB_DI_PIN_3 & 0xF));
+  _delay_us(80);
+ 
+// ws2812_DDRREG |= _BV(ws2812_pin); // Enable DDR
+  // new universal format (DDR)
+  _SFR_IO8((RGB_DI_PIN_4 >> 4) + 1) |= _BV(RGB_DI_PIN_4 & 0xF);
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds<<2,_BV(RGB_DI_PIN_4 & 0xF));
+  _delay_us(80);
+ 
+// ws2812_DDRREG |= _BV(ws2812_pin); // Enable DDR
+  // new universal format (DDR)
+  _SFR_IO8((RGB_DI_PIN_5 >> 4) + 1) |= _BV(RGB_DI_PIN_5 & 0xF);
+  ws2812_sendarray_mask((uint8_t*)ledarray,leds<<2,_BV(RGB_DI_PIN_5 & 0xF));
+  _delay_us(80);
+*/
 }
 
 void ws2812_sendarray(uint8_t *data,uint16_t datlen)
 {
   ws2812_sendarray_mask(data,datlen,_BV(RGB_DI_PIN & 0xF));
+}
+void ws2812_sendarray_1(uint8_t *data,uint16_t datlen)
+{
+  ws2812_sendarray_mask_1(data,datlen,_BV(RGB_DI_PIN_1 & 0xF));
+}
+
+void ws2812_sendarray_2(uint8_t *data,uint16_t datlen)
+{
+  ws2812_sendarray_mask_2(data,datlen,_BV(RGB_DI_PIN_2 & 0xF));
+}
+void ws2812_sendarray_3(uint8_t *data,uint16_t datlen)
+{
+  ws2812_sendarray_mask_3(data,datlen,_BV(RGB_DI_PIN_3 & 0xF));
+}
+
+void ws2812_sendarray_4(uint8_t *data,uint16_t datlen)
+{
+  ws2812_sendarray_mask_4(data,datlen,_BV(RGB_DI_PIN_4 & 0xF));
+}
+
+void ws2812_sendarray_5(uint8_t *data,uint16_t datlen)
+{
+  ws2812_sendarray_mask_5(data,datlen,_BV(RGB_DI_PIN_5 & 0xF));
 }
 
 /*
@@ -186,5 +308,395 @@ w_nop16
     );
   }
 
+  SREG=sreg_prev;
+}
+
+void inline ws2812_sendarray_mask_5(uint8_t *data,uint16_t datlen,uint8_t maskhi)
+{
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+
+  // masklo  =~maskhi&ws2812_PORTREG;
+  // maskhi |=        ws2812_PORTREG;
+  masklo  =~maskhi&_SFR_IO8((RGB_DI_PIN_5 >> 4) + 2);
+  maskhi |=        _SFR_IO8((RGB_DI_PIN_5 >> 4) + 2);
+  sreg_prev=SREG;
+  cli();
+
+  while (datlen--) {
+    curbyte=*data++;
+
+    asm volatile(
+    "       ldi   %0,8  \n\t"
+    "loop%=:            \n\t"
+    "       out   %2,%3 \n\t"    //  '1' [01] '0' [01] - re
+#if (w1_nops&1)
+w_nop1
+#endif
+#if (w1_nops&2)
+w_nop2
+#endif
+#if (w1_nops&4)
+w_nop4
+#endif
+#if (w1_nops&8)
+w_nop8
+#endif
+#if (w1_nops&16)
+w_nop16
+#endif
+    "       sbrs  %1,7  \n\t"    //  '1' [03] '0' [02]
+    "       out   %2,%4 \n\t"    //  '1' [--] '0' [03] - fe-low
+    "       lsl   %1    \n\t"    //  '1' [04] '0' [04]
+#if (w2_nops&1)
+  w_nop1
+#endif
+#if (w2_nops&2)
+  w_nop2
+#endif
+#if (w2_nops&4)
+  w_nop4
+#endif
+#if (w2_nops&8)
+  w_nop8
+#endif
+#if (w2_nops&16)
+  w_nop16
+#endif
+    "       out   %2,%4 \n\t"    //  '1' [+1] '0' [+1] - fe-high
+#if (w3_nops&1)
+w_nop1
+#endif
+#if (w3_nops&2)
+w_nop2
+#endif
+#if (w3_nops&4)
+w_nop4
+#endif
+#if (w3_nops&8)
+w_nop8
+#endif
+#if (w3_nops&16)
+w_nop16
+#endif
+
+    "       dec   %0    \n\t"    //  '1' [+2] '0' [+2]
+    "       brne  loop%=\n\t"    //  '1' [+3] '0' [+4]
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(_SFR_IO8((RGB_DI_PIN_5 >> 4) + 2))), "r" (maskhi), "r" (masklo)
+    );
+  }
+  SREG=sreg_prev;
+}
+
+void inline ws2812_sendarray_mask_4(uint8_t *data,uint16_t datlen,uint8_t maskhi)
+{
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+
+  // masklo  =~maskhi&ws2812_PORTREG;
+  // maskhi |=        ws2812_PORTREG;
+  masklo  =~maskhi&_SFR_IO8((RGB_DI_PIN_4 >> 4) + 2);
+  maskhi |=        _SFR_IO8((RGB_DI_PIN_4 >> 4) + 2);
+  sreg_prev=SREG;
+  cli();
+
+  while (datlen--) {
+    curbyte=*data++;
+
+    asm volatile(
+    "       ldi   %0,8  \n\t"
+    "loop%=:            \n\t"
+    "       out   %2,%3 \n\t"    //  '1' [01] '0' [01] - re
+#if (w1_nops&1)
+w_nop1
+#endif
+#if (w1_nops&2)
+w_nop2
+#endif
+#if (w1_nops&4)
+w_nop4
+#endif
+#if (w1_nops&8)
+w_nop8
+#endif
+#if (w1_nops&16)
+w_nop16
+#endif
+    "       sbrs  %1,7  \n\t"    //  '1' [03] '0' [02]
+    "       out   %2,%4 \n\t"    //  '1' [--] '0' [03] - fe-low
+    "       lsl   %1    \n\t"    //  '1' [04] '0' [04]
+#if (w2_nops&1)
+  w_nop1
+#endif
+#if (w2_nops&2)
+  w_nop2
+#endif
+#if (w2_nops&4)
+  w_nop4
+#endif
+#if (w2_nops&8)
+  w_nop8
+#endif
+#if (w2_nops&16)
+  w_nop16
+#endif
+    "       out   %2,%4 \n\t"    //  '1' [+1] '0' [+1] - fe-high
+#if (w3_nops&1)
+w_nop1
+#endif
+#if (w3_nops&2)
+w_nop2
+#endif
+#if (w3_nops&4)
+w_nop4
+#endif
+#if (w3_nops&8)
+w_nop8
+#endif
+#if (w3_nops&16)
+w_nop16
+#endif
+
+    "       dec   %0    \n\t"    //  '1' [+2] '0' [+2]
+    "       brne  loop%=\n\t"    //  '1' [+3] '0' [+4]
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(_SFR_IO8((RGB_DI_PIN_4 >> 4) + 2))), "r" (maskhi), "r" (masklo)
+    );
+  }
+  SREG=sreg_prev;
+}
+
+void inline ws2812_sendarray_mask_3(uint8_t *data,uint16_t datlen,uint8_t maskhi)
+{
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+
+  // masklo  =~maskhi&ws2812_PORTREG;
+  // maskhi |=        ws2812_PORTREG;
+  masklo  =~maskhi&_SFR_IO8((RGB_DI_PIN_3 >> 4) + 2);
+  maskhi |=        _SFR_IO8((RGB_DI_PIN_3 >> 4) + 2);
+  sreg_prev=SREG;
+  cli();
+
+  while (datlen--) {
+    curbyte=*data++;
+
+    asm volatile(
+    "       ldi   %0,8  \n\t"
+    "loop%=:            \n\t"
+    "       out   %2,%3 \n\t"    //  '1' [01] '0' [01] - re
+#if (w1_nops&1)
+w_nop1
+#endif
+#if (w1_nops&2)
+w_nop2
+#endif
+#if (w1_nops&4)
+w_nop4
+#endif
+#if (w1_nops&8)
+w_nop8
+#endif
+#if (w1_nops&16)
+w_nop16
+#endif
+    "       sbrs  %1,7  \n\t"    //  '1' [03] '0' [02]
+    "       out   %2,%4 \n\t"    //  '1' [--] '0' [03] - fe-low
+    "       lsl   %1    \n\t"    //  '1' [04] '0' [04]
+#if (w2_nops&1)
+  w_nop1
+#endif
+#if (w2_nops&2)
+  w_nop2
+#endif
+#if (w2_nops&4)
+  w_nop4
+#endif
+#if (w2_nops&8)
+  w_nop8
+#endif
+#if (w2_nops&16)
+  w_nop16
+#endif
+    "       out   %2,%4 \n\t"    //  '1' [+1] '0' [+1] - fe-high
+#if (w3_nops&1)
+w_nop1
+#endif
+#if (w3_nops&2)
+w_nop2
+#endif
+#if (w3_nops&4)
+w_nop4
+#endif
+#if (w3_nops&8)
+w_nop8
+#endif
+#if (w3_nops&16)
+w_nop16
+#endif
+
+    "       dec   %0    \n\t"    //  '1' [+2] '0' [+2]
+    "       brne  loop%=\n\t"    //  '1' [+3] '0' [+4]
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(_SFR_IO8((RGB_DI_PIN_3 >> 4) + 2))), "r" (maskhi), "r" (masklo)
+    );
+  }
+  SREG=sreg_prev;
+}
+
+void inline ws2812_sendarray_mask_2(uint8_t *data,uint16_t datlen,uint8_t maskhi)
+{
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+
+  // masklo  =~maskhi&ws2812_PORTREG;
+  // maskhi |=        ws2812_PORTREG;
+  masklo  =~maskhi&_SFR_IO8((RGB_DI_PIN_2 >> 4) + 2);
+  maskhi |=        _SFR_IO8((RGB_DI_PIN_2 >> 4) + 2);
+  sreg_prev=SREG;
+  cli();
+
+  while (datlen--) {
+    curbyte=*data++;
+
+    asm volatile(
+    "       ldi   %0,8  \n\t"
+    "loop%=:            \n\t"
+    "       out   %2,%3 \n\t"    //  '1' [01] '0' [01] - re
+#if (w1_nops&1)
+w_nop1
+#endif
+#if (w1_nops&2)
+w_nop2
+#endif
+#if (w1_nops&4)
+w_nop4
+#endif
+#if (w1_nops&8)
+w_nop8
+#endif
+#if (w1_nops&16)
+w_nop16
+#endif
+    "       sbrs  %1,7  \n\t"    //  '1' [03] '0' [02]
+    "       out   %2,%4 \n\t"    //  '1' [--] '0' [03] - fe-low
+    "       lsl   %1    \n\t"    //  '1' [04] '0' [04]
+#if (w2_nops&1)
+  w_nop1
+#endif
+#if (w2_nops&2)
+  w_nop2
+#endif
+#if (w2_nops&4)
+  w_nop4
+#endif
+#if (w2_nops&8)
+  w_nop8
+#endif
+#if (w2_nops&16)
+  w_nop16
+#endif
+    "       out   %2,%4 \n\t"    //  '1' [+1] '0' [+1] - fe-high
+#if (w3_nops&1)
+w_nop1
+#endif
+#if (w3_nops&2)
+w_nop2
+#endif
+#if (w3_nops&4)
+w_nop4
+#endif
+#if (w3_nops&8)
+w_nop8
+#endif
+#if (w3_nops&16)
+w_nop16
+#endif
+
+    "       dec   %0    \n\t"    //  '1' [+2] '0' [+2]
+    "       brne  loop%=\n\t"    //  '1' [+3] '0' [+4]
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(_SFR_IO8((RGB_DI_PIN_2 >> 4) + 2))), "r" (maskhi), "r" (masklo)
+    );
+  }
+  SREG=sreg_prev;
+}
+
+void inline ws2812_sendarray_mask_1(uint8_t *data,uint16_t datlen,uint8_t maskhi)
+{
+  uint8_t curbyte,ctr,masklo;
+  uint8_t sreg_prev;
+
+  // masklo  =~maskhi&ws2812_PORTREG;
+  // maskhi |=        ws2812_PORTREG;
+  masklo  =~maskhi&_SFR_IO8((RGB_DI_PIN_1 >> 4) + 2);
+  maskhi |=        _SFR_IO8((RGB_DI_PIN_1 >> 4) + 2);
+  sreg_prev=SREG;
+  cli();
+
+  while (datlen--) {
+    curbyte=*data++;
+
+    asm volatile(
+    "       ldi   %0,8  \n\t"
+    "loop%=:            \n\t"
+    "       out   %2,%3 \n\t"    //  '1' [01] '0' [01] - re
+#if (w1_nops&1)
+w_nop1
+#endif
+#if (w1_nops&2)
+w_nop2
+#endif
+#if (w1_nops&4)
+w_nop4
+#endif
+#if (w1_nops&8)
+w_nop8
+#endif
+#if (w1_nops&16)
+w_nop16
+#endif
+    "       sbrs  %1,7  \n\t"    //  '1' [03] '0' [02]
+    "       out   %2,%4 \n\t"    //  '1' [--] '0' [03] - fe-low
+    "       lsl   %1    \n\t"    //  '1' [04] '0' [04]
+#if (w2_nops&1)
+  w_nop1
+#endif
+#if (w2_nops&2)
+  w_nop2
+#endif
+#if (w2_nops&4)
+  w_nop4
+#endif
+#if (w2_nops&8)
+  w_nop8
+#endif
+#if (w2_nops&16)
+  w_nop16
+#endif
+    "       out   %2,%4 \n\t"    //  '1' [+1] '0' [+1] - fe-high
+#if (w3_nops&1)
+w_nop1
+#endif
+#if (w3_nops&2)
+w_nop2
+#endif
+#if (w3_nops&4)
+w_nop4
+#endif
+#if (w3_nops&8)
+w_nop8
+#endif
+#if (w3_nops&16)
+w_nop16
+#endif
+
+    "       dec   %0    \n\t"    //  '1' [+2] '0' [+2]
+    "       brne  loop%=\n\t"    //  '1' [+3] '0' [+4]
+    :	"=&d" (ctr)
+    :	"r" (curbyte), "I" (_SFR_IO_ADDR(_SFR_IO8((RGB_DI_PIN_1 >> 4) + 2))), "r" (maskhi), "r" (masklo)
+    );
+  }
   SREG=sreg_prev;
 }

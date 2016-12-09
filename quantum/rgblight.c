@@ -141,9 +141,9 @@ void eeconfig_update_rgblight_default(void) {
   dprintf("eeconfig_update_rgblight_default\n");
   rgblight_config.enable = 1;
   rgblight_config.mode = 1;
-  rgblight_config.hue = 200;
-  rgblight_config.sat = 204;
-  rgblight_config.val = 204;
+  rgblight_config.hue = 10;
+  rgblight_config.sat = 10;
+  rgblight_config.val = 10;
   eeconfig_update_rgblight(rgblight_config.raw);
 }
 void eeconfig_debug_rgblight(void) {

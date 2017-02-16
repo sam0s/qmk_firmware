@@ -42,8 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
 */
-#define MATRIX_ROW_PINS { E6, F4, D7 }
-#define MATRIX_COL_PINS { C6, C7, F7, F6, F1, F0, B7, B3, B2, B1, B0}
+#define MATRIX_ROW_PINS { F0, F4, D7}
+#define MATRIX_COL_PINS { C6, C7, F7, F6, F1, E6, B7, B3, B2, B1, B0}
 #define UNUSED_PINS
 
 /* COL2ROW or ROW2COL */
@@ -160,7 +160,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define NO_ACTION_FUNCTION
 
 #define RGBLIGHT_TIMER 
-#define RGB_DI_PIN D1     // The pin your RGB strip is wired to
+#define RGB_DI_PIN D0     // The pin your RGB strip is wired to
 #define RGBLIGHT_TIMER    // Require for fancier stuff (not compatible with audio)
 #define RGBLED_NUM 1     // Number of LEDs
 #define RGBLIGHT_HUE_STEP 10

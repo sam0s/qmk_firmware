@@ -9,7 +9,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [1] ={
        {KC_PGUP,  KC_UP,    KC_PGDN,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_DEL},
        {KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_TRNS,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_END,   KC_TRNS},
-       {RGB_TOG,  RGB_MOD,  RGB_HUI,  RGB_HUD,  RGB_SAI,  RGB_SAD,  RGB_VAI,  RGB_VAD, KC_TRNS, KC_TRNS, KC_TRNS},
+       {RGB_TOG,  RGB_HUI,  RGB_HUD,  RGB_SAI,  KC_TRNS,  RGB_SAD,  RGB_VAI,  RGB_VAD, KC_TRNS, KC_TRNS, RGB_MOD},
      }
 };
 const uint16_t PROGMEM fn_actions[] = {
